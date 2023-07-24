@@ -26,8 +26,8 @@ public class admin {
 		try {
 			System.out.println("Enter number of courses : ");
 			int n = sc.nextInt();
-			for(int i=0;i<n;i++) {
-				System.out.println("Enter Course "+(i+1));
+			for(int i=1;i<=n;i++) {
+				System.out.println("Enter Course Name");
 				String course = sc.next();
 				c.c.add(course);
 				c.cid.add("Course"+c.c.size());
@@ -47,10 +47,10 @@ public class admin {
 			int n = sc.nextInt();
 			for(int i=1;i<=n;i++) {
 				System.out.println("Enter Professors Name");
-				p.pdet.add(" ");
+				p.prof_details.add(" ");
 				String prof = sc.next();
 				p.p.add(prof);
-				p.pid.add("Prof:"+p.p.size());
+				p.prof_id.add("Prof:"+p.p.size());
 				System.out.println("Select the Course :");
 				for(int j=0;j<c.c.size();j++)
 				{
@@ -76,9 +76,9 @@ public class admin {
 				p.teach.add(course);
 			}
 			System.out.print("Professors IDs:");
-			for(int j=0;j<p.pid.size();j++)
+			for(int j=0;j<p.prof_id.size();j++)
 			{
-				System.out.print(" "+p.pid.get(j));
+				System.out.print(" "+p.prof_id.get(j));
 			}
 			
 			System.out.println();
@@ -97,10 +97,10 @@ public class admin {
 			for(int i=1;i<=n;i++) {
 				System.out.println("Enter Student's Name");
 				s.score.add("Not Graded yet.");
-				s.sdet.add(" ");
+				s.stu_detail.add(" ");
 				String stu = sc.next();
 				s.s.add(stu);
-				s.sid.add("stu"+s.s.size());
+				s.stu_id.add("stu"+s.s.size());
 				//Student course
 				System.out.println("Please choose a course from the options provided below :");
 				for(int j=0;j<c.c.size();j++)
@@ -127,21 +127,21 @@ public class admin {
 				//Student professor
 				System.out.println("Select professor's ID :");
 				
-				String pid = sc.next();
+				String prof_id = sc.next();
 				try {
-					if(!(p.pid.contains(pid))){
+					if(!(p.prof_id.contains(prof_id))){
 						System.out.println(e.professornotfound());
 						throw e;
 					}
 				}
 				catch (Exception e1) {
 					System.out.println("Choosing the incorrect option will result in you being logged out.");
-					pid = sc.next();
-					if (!(p.pid.contains(pid))) {
+					prof_id = sc.next();
+					if (!(p.prof_id.contains(prof_id))) {
 						System.exit(0);
 					}
 				}
-				s.pid.add(pid);
+				s.prof_id.add(prof_id);
 			}
 		}
 		catch(InputMismatchException e1) {
@@ -154,14 +154,14 @@ public class admin {
 	void getprofessor() {
 		for(int i=0;i<p.p.size();i++) {
 			System.out.println("\nProfessor "+(i+1));
-			System.out.println(p.pdet.get(i));
+			System.out.println(p.prof_details.get(i));
 		}
 	}
 	
 	void getstudent() {
 		for(int i=0;i<s.s.size();i++) {
 			System.out.println("\nStudent "+(i+1));
-			System.out.println(s.sdet.get(i));
+			System.out.println(s.stu_detail.get(i));
 		}
 	}
 }

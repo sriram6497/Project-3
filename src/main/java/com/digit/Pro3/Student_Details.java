@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class Student_Details {
 	Scanner sc = new Scanner(System.in);
-	public static ArrayList sid = new ArrayList();
+	public static ArrayList stu_id = new ArrayList();
 	public static ArrayList s = new ArrayList();
 	public static ArrayList selectedcourse = new ArrayList();
-	public static ArrayList pid = new ArrayList();
+	public static ArrayList prof_id = new ArrayList();
 	public static ArrayList score = new ArrayList();
-	public static ArrayList sdet = new ArrayList();
+	public static ArrayList stu_detail = new ArrayList();
 	
 	void login() {
 		System.out.println();
@@ -22,9 +22,9 @@ public class Student_Details {
 		System.out.println("Enter Name : ");
 		String name = sc.next();
 		for(int i=0;i<s.size();i++) {
-			if(sid.get(i).equals(id) && s.get(i).equals(name.replace("_", " "))) {
+			if(stu_id.get(i).equals(id) && s.get(i).equals(name.replace("_", " "))) {
 				System.out.println("Login Successful");
-				if(sdet.get(i).equals(" ")) {
+				if(stu_detail.get(i).equals(" ")) {
 					System.out.println("Please fill out Profile Information");
 					sdetails(i);
 				}
@@ -44,15 +44,17 @@ public class Student_Details {
 	}
 	
 	void getmarkscard(int i) {
-		System.out.println("\nAcademic Transcript : ");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("\t Academic Transcript ");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println();
-		System.out.println(sdet.get(i));
+		System.out.println(stu_detail.get(i));
 		System.out.println();
 	}
 	
 	void sdetails(int i) {
 		try {
-			String pdetails = "ID           : "+sid.get(i)+"\n"+"Name         : "+s.get(i)+"\n";
+			String pdetails = "ID           : "+stu_id.get(i)+"\n"+"Name         : "+s.get(i)+"\n";
 			System.out.println("Enter your details : ");
 			System.out.println("Age :");
 			int age = sc.nextInt();
@@ -61,7 +63,7 @@ public class Student_Details {
 			String city = sc.next();
 			pdetails = pdetails + "City         : "+city.replace("_", " ")+"\nCourse ID    : "+Course.cid.get(i)+"\nCourse Name  : "+selectedcourse.get(i);
 			pdetails = pdetails +"\nProfessor    : "+Professor_Details.p.get(i);
-			sdet.set(i, pdetails);
+			stu_detail.set(i, pdetails);
 			System.out.println();
 			System.out.println("Your profile completed");
 		}
